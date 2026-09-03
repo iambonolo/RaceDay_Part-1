@@ -37,7 +37,7 @@ This part of the project (Part 1) covers the planning phase only — no applicat
 
 ## CI/CD
 
-<!-- Insert screenshot of the successful green GitHub Actions build here -->
+ ![CI Success](docs/ci-success.png) 
 
 ## Video Walkthrough
 
