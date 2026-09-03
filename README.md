@@ -37,7 +37,7 @@ This part of the project (Part 1) covers the planning phase only — no applicat
 
 ## CI/CD
 
- ![CI Success](docs/ci-success.png) 
+ ![CI Success](ci-success.png)
 
 ## Video Walkthrough
 
