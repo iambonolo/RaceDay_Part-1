@@ -41,4 +41,4 @@ This part of the project (Part 1) covers the planning phase only — no applicat
 
 ## Video Walkthrough
 
-<!-- Insert unlisted YouTube link here — walkthrough of ERD decisions, endpoint plan choices, and the SQL script running live in SSMS -->
+ https://youtu.be/rciX57sJRKM
