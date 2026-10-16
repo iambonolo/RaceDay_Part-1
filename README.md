@@ -5,7 +5,7 @@ A RESTful API built with **ASP.NET Core 8 (C#)** for managing South African runn
 **Student:** Bonolo Mogorosi (ST10062230) · Rosebank College · PROG6212 Programming 2B
 
 ## Video demonstration
-[Watch the Part 2 demonstration on YouTube (unlisted)](PASTE-YOUR-UNLISTED-LINK-HERE)
+[Watch the Part 2 demonstration on YouTube (unlisted)](https://youtu.be/xk-OizO49-k)
 
 ## Tech stack
 - ASP.NET Core 8 Web API (controllers)
