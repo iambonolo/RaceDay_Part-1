@@ -27,11 +27,7 @@ namespace RaceDay.Mvc.Controllers
 
             var response = await client.PostAsJsonAsync(
                 "api/auth/login",
-                new
-                {
-                    Email = email,
-                    Password = password
-                });
+                new { Email = email, Password = password });
 
             if (!response.IsSuccessStatusCode)
             {
@@ -39,37 +35,59 @@ namespace RaceDay.Mvc.Controllers
                 return View();
             }
 
-            var user = await response.Content.ReadFromJsonAsync<JsonElement>();
+            var json = await response.Content.ReadAsStringAsync();
 
-            HttpContext.Session.SetInt32(
-                "UserId",
-                user.GetProperty("userId").GetInt32());
+            using var document = JsonDocument.Parse(json);
+            var user = document.RootElement;
 
-            HttpContext.Session.SetString(
-                "FullName",
-                user.GetProperty("fullName").GetString() ?? "");
-
-            HttpContext.Session.SetString(
-                "Email",
-                user.GetProperty("email").GetString() ?? "");
-
-            HttpContext.Session.SetString(
-                "Role",
-                user.GetProperty("role").GetString() ?? "");
-
-            var role = HttpContext.Session.GetString("Role");
-
-            if (role == "Organiser")
+            string GetValue(string property)
             {
-                return Redirect("/Organiser/Index");
+                foreach (var item in user.EnumerateObject())
+                {
+                    if (string.Equals(item.Name, property,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        return item.Value.ValueKind == JsonValueKind.String
+                            ? item.Value.GetString() ?? ""
+                            : item.Value.ToString();
+                    }
+                }
+
+                return "";
             }
 
-            if (role == "Participant")
+            var userIdText = GetValue("userId");
+            var fullName = GetValue("fullName");
+            var userEmail = GetValue("email");
+            var role = GetValue("role");
+
+            if (!int.TryParse(userIdText, out int userId) ||
+                string.IsNullOrWhiteSpace(role))
             {
-                return Redirect("/Participant/Index");
+                ViewBag.Error = "The API returned an incomplete user profile.";
+                return View();
             }
 
-            return RedirectToAction("Login");
+            HttpContext.Session.SetInt32("UserId", userId);
+            HttpContext.Session.SetString("FullName", fullName);
+            HttpContext.Session.SetString("Email", userEmail);
+            HttpContext.Session.SetString("Role", role.Trim());
+
+            if (string.Equals(role.Trim(), "Organiser",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                return RedirectToAction("Index", "Organiser");
+            }
+
+            if (string.Equals(role.Trim(), "Participant",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                return RedirectToAction("Index", "Participant");
+            }
+
+            HttpContext.Session.Clear();
+            ViewBag.Error = "Unrecognised account role: " + role;
+            return View();
         }
 
         public IActionResult Register()
