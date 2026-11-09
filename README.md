@@ -1,10 +1,10 @@
-RaceDay – Part 3: MVC Web Application
+# RaceDay – Part 3: MVC Web Application
 
-System Overview
+# System Overview
 
 Part 3 extends the RaceDay REST API developed in Part 2 by introducing an ASP.NET Core MVC web application. The MVC application provides a user-friendly interface for organisers and participants while communicating with the REST API for authentication and data operations.
 
-MVC Application
+# MVC Application
 
 The MVC frontend allows:
 
