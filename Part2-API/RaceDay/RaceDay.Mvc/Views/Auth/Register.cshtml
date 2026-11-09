@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5" style="max-width: 550px;">
+    <h2 class="text-center mb-4">Join RaceDay</h2>
+    <p class="text-center text-muted">Create your RaceDay account.</p>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <form asp-action="Register" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="fullName" class="form-control"
+                   required maxlength="100" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control"
+                   required minlength="8" />
+            <small class="text-muted">At least 8 characters.</small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Account Type</label>
+            <select name="role" class="form-select" required>
+                <option value="">Select account type</option>
+                <option value="Participant">Participant</option>
+                <option value="Organiser">Organiser</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Organiser Code (if applicable)</label>
+            <input type="text" name="organiserCode" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">
+            Create Account
+        </button>
+    </form>
+
+    <p class="text-center mt-3">
+        Already registered?
+        <a asp-action="Login">Login here</a>
+    </p>
+</div>

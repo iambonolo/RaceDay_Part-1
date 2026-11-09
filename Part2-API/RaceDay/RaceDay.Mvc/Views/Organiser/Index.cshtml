@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-5">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <h1>Welcome, @ViewBag.FullName!</h1>
+    <p class="lead">RaceDay Organiser Dashboard</p>
+
+    <div class="card p-4 mt-4">
+        <h4>My Events</h4>
+        <h2>@ViewBag.EventCount</h2>
+        <p>Total events retrieved from RaceDay API.</p>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger mt-3">
+            @ViewBag.Error
+        </div>
+    }
+
+    <div class="mt-4">
+        <h4>Event Management</h4>
+        <p>Create, manage and update your sporting events.</p>
+
+        <a asp-controller="Organiser"
+           asp-action="Create"
+           class="btn btn-success mt-3">
+            + Create New Event
+        </a>
+    </div>
+
+</div>

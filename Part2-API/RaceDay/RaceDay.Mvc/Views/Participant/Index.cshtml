@@ -1,0 +1,68 @@
+﻿@model List<RaceDay.Mvc.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Participant Dashboard";
+}
+
+<div class="container mt-5">
+
+    <h1>Welcome to RaceDay, @ViewBag.FullName!</h1>
+    <p class="lead">Discover events and manage your race activities.</p>
+
+    <h3 class="mt-4 mb-3">Upcoming Events</h3>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var raceEvent in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@raceEvent.Name</h5>
+
+                            <p>@raceEvent.Description</p>
+
+                            <p><strong>Date:</strong> @raceEvent.EventDate.ToString("dd MMMM yyyy")</p>
+                            <p><strong>Location:</strong> @raceEvent.Location</p>
+                            <p><strong>Distance:</strong> @raceEvent.DistanceKm km</p>
+                            <p><strong>Type:</strong> @raceEvent.EventType</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            There are currently no upcoming events available.
+        </div>
+    }
+
+    <hr />
+
+    <div class="row mt-4">
+
+        <div class="col-md-6 mb-3">
+            <div class="card p-3 h-100">
+                <h4>My Events</h4>
+                <p>View your event enrolments and their status.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card p-3 h-100">
+                <h4>My Results</h4>
+                <p>View your race results and finishing positions.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
