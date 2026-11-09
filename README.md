@@ -50,7 +50,7 @@ Docker
 
 GitHub Actions
 
-Running the MVC Application
+## Running the MVC Application
 
 Open the RaceDay solution in Visual Studio 2022.
 
@@ -62,7 +62,7 @@ Set RaceDay.Mvc as the startup project.
 
 Run the application using Visual Studio.
 
-Docker
+## Docker
 
 The MVC application includes a Dockerfile for containerisation.
 
@@ -76,9 +76,9 @@ docker run -d -p 8080:8080 --name raceday-container raceday-mvc
 
 Open the application at http://localhost:8080.
 
-Note: The MVC application requires access to the RaceDay API. When running in Docker, the API base URL must point to an address accessible from inside the container. The API and database must also be running and reachable.
+### Note: The MVC application requires access to the RaceDay API. When running in Docker, the API base URL must point to an address accessible from inside the container. The API and database must also be running and reachable.
 
-Source Code
+## Source Code
 
 GitHub Repository: https://github.com/iambonolo/RaceDay_Part-1
 
