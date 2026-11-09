@@ -1,3 +1,87 @@
+RaceDay – Part 3: MVC Web Application
+
+System Overview
+
+Part 3 extends the RaceDay REST API developed in Part 2 by introducing an ASP.NET Core MVC web application. The MVC application provides a user-friendly interface for organisers and participants while communicating with the REST API for authentication and data operations.
+
+MVC Application
+
+The MVC frontend allows:
+
+Organisers
+
+View their event dashboard.
+
+Create and manage sporting events.
+
+Manage event categories.
+
+View event enrolments.
+
+Capture and manage race results.
+
+Participants
+
+Browse upcoming sporting events.
+
+View event details and categories.
+
+Enrol in sporting events.
+
+View their enrolments and race results.
+
+Manage their profile.
+
+Technologies Used
+
+ASP.NET Core MVC 8
+
+ASP.NET Core Web API 8
+
+C#
+
+Entity Framework Core
+
+SQL Server
+
+Bootstrap
+
+Docker
+
+GitHub Actions
+
+Running the MVC Application
+
+Open the RaceDay solution in Visual Studio 2022.
+
+Ensure the RaceDay API is running.
+
+Configure the API base URL in RaceDay.Mvc/appsettings.json.
+
+Set RaceDay.Mvc as the startup project.
+
+Run the application using Visual Studio.
+
+Docker
+
+The MVC application includes a Dockerfile for containerisation.
+
+From the repository root, build the image:
+
+docker build -f Part2-API/RaceDay/RaceDay.Mvc/Dockerfile -t raceday-mvc .
+
+Run the container:
+
+docker run -d -p 8080:8080 --name raceday-container raceday-mvc
+
+Open the application at http://localhost:8080.
+
+Note: The MVC application requires access to the RaceDay API. When running in Docker, the API base URL must point to an address accessible from inside the container. The API and database must also be running and reachable.
+
+Source Code
+
+GitHub Repository: https://github.com/iambonolo/RaceDay_Part-1
+
 # RaceDay – Part 2: REST API
 
 A RESTful API built with **ASP.NET Core 8 (C#)** for managing South African running, walking and cycling events. **Organisers** create events and categories and record race results. **Participants** enrol in events and view their own enrolments and results. Data is stored in **SQL Server** using **Entity Framework Core (Code-First)**.
