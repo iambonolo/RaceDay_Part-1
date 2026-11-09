@@ -1,0 +1,64 @@
+﻿@model RaceDay.Mvc.Models.EventViewModel
+
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<div class="container mt-5">
+
+    <a asp-controller="Participant"
+       asp-action="Index"
+       class="btn btn-outline-secondary mb-4">
+        &larr; Back to Events
+    </a>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (Model != null)
+    {
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">@Model.Name</h2>
+            </div>
+
+            <div class="card-body">
+
+                <h5 class="mb-3">Event Information</h5>
+
+                <p><strong>Description:</strong> @Model.Description</p>
+
+                <p>
+                    <strong>Event Date:</strong>
+                    @Model.EventDate.ToString("dd MMMM yyyy")
+                </p>
+
+                <p><strong>Location:</strong> @Model.Location</p>
+
+                <p><strong>Distance:</strong> @Model.DistanceKm km</p>
+
+                <p><strong>Event Type:</strong> @Model.EventType</p>
+
+                <p>
+                    <strong>Organiser:</strong>
+                    @(Model.OrganiserName ?? "Not specified")
+                </p>
+
+                <hr />
+
+                <h5>Ready to participate?</h5>
+                <p>
+                    You can review the event information before enrolling.
+                </p>
+
+                <button type="button" class="btn btn-success" disabled>
+                    Enrolment Coming Soon
+                </button>
+
+            </div>
+        </div>
+    }
+
+</div>
