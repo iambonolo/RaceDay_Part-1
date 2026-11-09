@@ -8,7 +8,7 @@ Part 3 extends the RaceDay REST API developed in Part 2 by introducing an ASP.NE
 
 The MVC frontend allows:
 
-Organisers
+## Organisers
 
 View their event dashboard.
 
@@ -20,7 +20,7 @@ View event enrolments.
 
 Capture and manage race results.
 
-Participants
+## Participants
 
 Browse upcoming sporting events.
 
@@ -32,7 +32,7 @@ View their enrolments and race results.
 
 Manage their profile.
 
-Technologies Used
+## Technologies Used
 
 ASP.NET Core MVC 8
 
